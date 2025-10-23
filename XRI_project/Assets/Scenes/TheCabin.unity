@@ -3350,6 +3350,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100002, guid: 764ad00f4d34adc4bbd05990f05ca5c4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 563943872}
+    - targetCorrespondingSourceObject: {fileID: 100004, guid: 764ad00f4d34adc4bbd05990f05ca5c4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 563943874}
   m_SourcePrefab: {fileID: 100100000, guid: 764ad00f4d34adc4bbd05990f05ca5c4, type: 3}
 --- !u!4 &563943869 stripped
 Transform:
@@ -3387,6 +3390,34 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.07, y: 2.3502522, z: 0.07623565}
   m_Center: {x: 0, y: 1.1104305, z: -0.02311784}
+--- !u!1 &563943873 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100004, guid: 764ad00f4d34adc4bbd05990f05ca5c4, type: 3}
+  m_PrefabInstance: {fileID: 563943868}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &563943874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 563943873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff7a8188b1cddde479db3774164ba709, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DoorFeatures
+  <AudioClipOnStart>k__BackingField: {fileID: 0}
+  <AudioClipOnEnd>k__BackingField: {fileID: 0}
+  featureUsage: 0
+  doorPivot: {fileID: 0}
+  maxAngle: 90
+  reverseAngleDirection: 0
+  doorSpeed: 2
+  open: 0
+  MakeKinematicOnOpen: 1
+  socketInteractor: {fileID: 0}
+  simpleInteractable: {fileID: 0}
 --- !u!1 &599317086
 GameObject:
   m_ObjectHideFlags: 0

@@ -27,7 +27,8 @@ public class CoreFeatures : MonoBehaviour
     //Components
     public bool AudioSFXSourceCreated { get; set; }
 
-    [field: SerializeField]
+    [field: Header("Core Audio")]
+    [field: SerializeField] //field is for properties
     public AudioClip AudioClipOnStart { get; set; }
 
     [field: SerializeField]
@@ -35,6 +36,7 @@ public class CoreFeatures : MonoBehaviour
 
     private AudioSource audioSource;
 
+    [Header("Core Features")]
     public FeatureUsage featureUsage = FeatureUsage.Once;
 
     protected virtual void Awake()
@@ -55,5 +57,25 @@ public class CoreFeatures : MonoBehaviour
         //whether null or not, still need to make sure that its true
         //on awake, create audioscource
         AudioSFXSourceCreated = true;
+    }
+
+
+    //WHEN TO CALL SOUNDS
+    protected void PlayOnStart()
+    {
+        if(AudioSFXSourceCreated && AudioClipOnStart != null) //if audiosource created and clip exists (not equal to null)...
+        {
+            audioSource.clip = AudioClipOnStart;  //...set clip to audiosource...
+            audioSource.Play(); //...and play the clip
+        }
+    }
+
+    protected void PlayOnEnd()
+    {
+        if (AudioSFXSourceCreated && AudioClipOnEnd != null) //if audiosource created and clip exists (not equal to null)...
+        {
+            audioSource.clip = AudioClipOnEnd; //...set clip to audiosource...
+            audioSource.Play(); //...and play the clip
+        }
     }
 }
