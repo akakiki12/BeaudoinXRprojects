@@ -46,11 +46,12 @@ public class DoorFeatures : CoreFeatures
     private void Start()
     {
         //when key gets close to socket, add a listener
-        //- s = Shorthand --> SelectEnterEvents
+        //- "s" is shorthand for --> SelectEnterEvents
         //- "?" asks if socketInteractor exists, "=>" is lambda expression, ABSRACTION = hiding complexity
-        socketInteractor?.selectEntered.AddListener((s) => 
+        socketInteractor?.selectEntered.AddListener((s) =>
         {
-            //OpenDoor();
+            PlayOnStart();
+            OpenDoor();
         });
 
         //when key leaves socket, add a listener
@@ -63,8 +64,11 @@ public class DoorFeatures : CoreFeatures
         //doors with simple interactors may not need key. Also good for cabinets, drawers, etc.
         simpleInteractable?.selectEntered.AddListener((s) =>
         {
-            //OpenDoor();
+            OpenDoor();
         });
+
+
+        //OpenDoor(); //for testing purposes only
     }
 
     public void OpenDoor()
@@ -73,7 +77,6 @@ public class DoorFeatures : CoreFeatures
         {
             PlayOnStart(); //...play on start
             open = true; //...set door open to true
-
             StartCoroutine(ProcessMotion());
         }
     }
@@ -90,7 +93,7 @@ public class DoorFeatures : CoreFeatures
 
             if (angle <= maxAngle)
             {
-                doorPivot?.Rotate(Vector3.up, angle, doorSpeed * Time.deltaTime * (reverseAngleDirection) ? -1 : 1));
+                doorPivot?.Rotate(Vector3.up, doorSpeed * Time.deltaTime * (reverseAngleDirection ? -1 : 1));
             }
 
             else
@@ -98,13 +101,10 @@ public class DoorFeatures : CoreFeatures
                 //when done opening, turn off rigidbody
                 open = false;
                 var featureRigidBody = GetComponent<Rigidbody>();
-                if (featureRigidBody != null && MakeKinematicOnOpen) featureRigidBody.isKinematic = true;
-                {
-
-                }
+                if (featureRigidBody != null && MakeKinematicOnOpen) featureRigidBody.isKinematic = true; 
             }
 
-                yield return null;
+            yield return null;
         }
     }
 }
